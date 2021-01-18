@@ -1,0 +1,13 @@
+<p><strong>フォロワー 一覧</strong></p>
+<% @users.each do |user| %>
+  <table>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= link_to '詳細', user_path(user) %></td>
+  </tr>
+  </table>
+<% end %>
+<% if @users.size == 0 %>
+  <p>フォローされている人はいません</p>
+  <%= link_to t('views.common.back'), user_path(@user) %>
+<% end %>
