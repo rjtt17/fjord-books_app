@@ -42,5 +42,5 @@ yarn-debug.log*
 
 /public/uploads/*
 .env
-.env.development
-.env.sample
+/.env.development
+/.env.sample
