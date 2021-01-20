@@ -1,13 +1,13 @@
-<p><strong>フォロー 一覧</strong></p>
+<p><strong><%= t('views.relationship.followings') %></strong></p>
 <% @users.each do |user| %>
   <table>
   <tr>
     <td><%= user.name %></td>
-    <td><%= link_to '詳細', user_path(user) %></td>
+    <td><%= link_to t('views.common.show'), user_path(user) %></td>
   </tr>
   </table>
 <% end %>
 <% if @users.size == 0 %>
-  <p>フォローしている人はいません</p>
+  <p><%= t('views.relationship.no_following') %></p>
   <%= link_to t('views.common.back'), user_path(@user) %>
 <% end %>
