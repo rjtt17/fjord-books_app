@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
+  validates :follower_id, uniqueness: { scope: :following_id }
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
