@@ -22,6 +22,18 @@ class User < ApplicationRecord
     end
   end
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
+  def self.relationship_id(user) 
+    User.current.active_relationships.find_by(follower_id: user.id)
+  end
+
   def follow(other_user)
     followings << other_user
   end
