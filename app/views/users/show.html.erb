@@ -3,9 +3,9 @@
  <% unless current_user == @user %>
   <p>
   <% if current_user.following?(@user) %>
-    <%= render 'unfollow' %>
+    <%= render 'unfollow', user: @user %>
   <% else %>
-    <%= render 'follow' %>
+    <%= render 'follow', user: @user %>
   <% end %>
   </p>
 <% end %> 
