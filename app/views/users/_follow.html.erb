@@ -1,0 +1,4 @@
+<%= form_with model: User.current.active_relationships.build do |f| %>
+  <%= f.hidden_field :following_id, value: user.id %>
+  <%= f.submit t('views.relationship.follow') %>
+<% end %>
