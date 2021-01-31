@@ -11,4 +11,5 @@ Rails.application.routes.draw do
       resources :followers, only: [:index]
     end
   end
+  get 'users/:id/reports', to: 'users/reports#index', as: :user_reports
 end
