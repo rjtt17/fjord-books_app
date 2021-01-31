@@ -48,6 +48,8 @@
   <% end %>
 <% end %>
 
+<%= link_to 'ユーザー日報一覧', user_reports_path(@user) %>
+<br>
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
