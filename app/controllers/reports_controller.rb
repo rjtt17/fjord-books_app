@@ -19,12 +19,18 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    if @report.user_id == current_user.id
+      render "edit"
+    else
+      redirect_to reports_path
+    end
   end
 
   # POST /reports
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.user_id = current_user.id
 
     respond_to do |format|
       if @report.save
