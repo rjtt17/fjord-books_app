@@ -4,8 +4,8 @@
       <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
       <ul>
-        <% report.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
