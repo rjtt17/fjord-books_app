@@ -48,7 +48,7 @@
   <% end %>
 <% end %>
 
-<%= link_to 'ユーザー日報一覧', user_reports_path(@user) %>
+<%= link_to t('views.common.title_list', name: User.model_name.human + Report.model_name.human ), user_reports_path(@user) %>
 <br>
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
