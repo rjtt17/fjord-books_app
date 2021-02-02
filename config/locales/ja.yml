@@ -216,8 +216,10 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       title_show: "%{name}の詳細"
+      title_list: "%{name}の一覧"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
+      post_time: 投稿時間
     pagination:
       first: '最初'
       last: '最後'
@@ -250,6 +252,10 @@ ja:
       notice: "フォローしました。"
     destroy:
       notice: "フォロー解除しました。"
+  comments:
+      field: コメント入力欄
+      submit: コメントする
+      no_content: コメントがまだありません
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
