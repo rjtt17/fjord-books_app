@@ -1,0 +1,38 @@
+
+<%= form_with model: [commentable, Comment.new] do |form| %>
+  <%= form.label :body, t('comments.field') %>
+  <%= form.text_area :body ,required: "required" %><br>
+  <%= form.submit t('comments.submit') %>
+<% end %>
+<hr>
+<strong><%= t('views.common.title_list', name: Comment.model_name.human) %></strong>
+<br>
+<% if commentable.comments.size == 0 %>
+  <%= t('comments.no_content') %>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name(:name) %>/<%= User.human_attribute_name(:email) %></th>
+        <th><%= t('views.common.post_time') %></th>
+        <th><%= Comment.human_attribute_name(:body) %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% commentable.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name.blank? ? comment.user.email : comment.user.name %></td>
+          <td><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= comment.body %></td>
+          <% if comment.user.id == current_user.id %>
+            <td><%= link_to t('views.common.destroy'), "/#{comment.commentable_type.pluralize.downcase }/#{comment.commentable_id}/comments/#{comment.id}", method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+          <% end %>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
