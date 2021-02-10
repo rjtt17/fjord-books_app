@@ -1,4 +1,3 @@
-
 <%= form_with model: [commentable, Comment.new] do |form| %>
   <%= form.label :body, t('comments.field') %>
   <%= form.text_area :body ,required: "required" %><br>
