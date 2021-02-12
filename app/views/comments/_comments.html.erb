@@ -26,7 +26,7 @@
           <td><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= comment.body %></td>
           <% if comment.user.id == current_user.id %>
-            <td><%= link_to t('views.common.destroy'), "/#{comment.commentable_type.pluralize.downcase }/#{comment.commentable_id}/comments/#{comment.id}", method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+            <td><%= link_to t('views.common.destroy'), [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
           <% end %>
         <tr>
       <% end %>
