@@ -2,7 +2,7 @@
 
 class Users::ReportsController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @reports = @user.reports
+    @user = User.find(params[:user_id])
+    @reports = @user.reports.order(:id).page(params[:page])
   end
 end

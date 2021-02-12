@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
+    @reports = Report.order(:id).page(params[:page])
   end
 
   # GET /reports/1
