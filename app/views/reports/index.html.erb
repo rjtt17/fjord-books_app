@@ -26,5 +26,7 @@
   </tbody>
 </table>
 
+<%= paginate @reports %>
+
 <br>
 <%= link_to t('views.common.title_new', name: Report.model_name.human), new_report_path %>
