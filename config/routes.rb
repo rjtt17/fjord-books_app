@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     scope module: :users do
       resources :followings, only: [:index]
       resources :followers, only: [:index]
+      resources :reports, only: [:index]
     end
   end
-  get 'users/:id/reports', to: 'users/reports#index', as: :user_reports
+#  get 'users/:id/reports', to: 'users/reports#index', as: :user_reports
 end
