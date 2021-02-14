@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "users/registrations" }
   root to: 'books#index'
   resources :reports do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy], module: :reports
   end
   resources :books do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy], module: :books
   end
   resources :users, only: %i[index show] do
     resource :relationships, only: %i[create destroy]
