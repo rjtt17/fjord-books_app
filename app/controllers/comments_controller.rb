@@ -8,13 +8,10 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @commentable.comments.new(comment_params.merge(user: current_user))
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      else
-        format.html { redirect_to @commentable, notice: t('errors.template.header.one', model: Comment.model_name.human) }
-      end
+    if @comment.save
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      redirect_to @commentable, notice: t('errors.template.header.one', model: Comment.model_name.human)
     end
   end
 
@@ -23,9 +20,7 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.user_id == current_user.id
       @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-      end
+      redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
       redirect_to @commentable
     end
