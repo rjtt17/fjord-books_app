@@ -21,12 +21,14 @@ class ReportsTest < ApplicationSystemTestCase
   test 'creating a Report' do
     visit reports_url
     click_on '新規作成'
+    assert_current_path new_report_path
     fill_in 'タイトル', with: 'テストの日報２'
     fill_in '内容', with: 'テストを書くのは楽しい'
     click_on '登録する'
     assert_text '日報が作成されました。'
     assert_text 'テストの日報２'
     assert_text 'テストを書くのは楽しい'
+    assert_current_path report_path(2)
   end
 
   test 'updating a Report' do
