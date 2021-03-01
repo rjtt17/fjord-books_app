@@ -30,7 +30,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'updating a Report' do
-    visit reports_url
+    visit report_path(@report.id)
     click_on '編集'
     fill_in 'タイトル', with: 'テストの日報3'
     fill_in '内容', with: 'テストを書くのが上達したかも'
@@ -38,6 +38,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '日報が更新されました。'
     assert_text 'テストの日報3'
     assert_text 'テストを書くのが上達したかも'
+    assert_current_path report_path(@report.id)
   end
 
   test 'destroying a Report' do
